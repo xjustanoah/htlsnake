@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
-
 public class SnakeGame extends GameWindowBase<String> {
     public SnakeGame() {
         super(2);
@@ -39,7 +38,6 @@ public class SnakeGame extends GameWindowBase<String> {
 
     SpecialCharacterKey direction1 = SpecialCharacterKey.RIGHT;
 
-
     HashMap<Integer, Integer> positionPlayer0 = new HashMap<Integer, Integer>();
     ArrayList<WindowElementItem> snakeBodyPlayer0 = new ArrayList<>();
 
@@ -51,23 +49,30 @@ public class SnakeGame extends GameWindowBase<String> {
 
     boolean gameOver = false;
 
-
     @Override
     public void onStart() throws Exception {
         root.setTitle("SNAKE 2023");
-        items[2] = root.setText(new AlignmentHorizontal(AlignmentTypeHorizontal.LEFT, 2, 0), root.getHeight() - 2, null, root.formatter.getFormat(AdvancedColor.WHITE, Attribute.INTENSITY_BOLD, DefaultStyle.borderFormat));
-        items[3] = root.setText(new AlignmentHorizontal(AlignmentTypeHorizontal.RIGHT, 2, 1), root.getHeight() - 2, null, root.formatter.getFormat(AdvancedColor.WHITE, Attribute.INTENSITY_BOLD, DefaultStyle.borderFormat));
+        items[2] = root.setText(new AlignmentHorizontal(AlignmentTypeHorizontal.LEFT, 2, 0), root.getHeight() - 2, null,
+                root.formatter.getFormat(AdvancedColor.WHITE, Attribute.INTENSITY_BOLD, DefaultStyle.borderFormat));
+        items[3] = root.setText(new AlignmentHorizontal(AlignmentTypeHorizontal.RIGHT, 2, 1), root.getHeight() - 2,
+                null,
+                root.formatter.getFormat(AdvancedColor.WHITE, Attribute.INTENSITY_BOLD, DefaultStyle.borderFormat));
 
-
-        //#####################################################################################################
+        // #####################################################################################################
         // STUDENT TODO: Create snakes here
+        for (int i = 0; i < 3; i++) {
+            snakeBodyPlayer0.add(root.setElement(3, 4, 'X', null));
+        }
+        for (int i = 0; i < 3; i++) {
+            snakeBodyPlayer1.add(root.setElement(8, i + 9, 'X', null));
+        }
 
+        this.spawnApple();
 
-        //#####################################################################################################
+        // #####################################################################################################
 
-
-        gameOverScreen = root.setText(new AlignmentHorizontal(AlignmentTypeHorizontal.CENTER), new AlignmentVertical(AlignmentTypeVertical.MIDDLE), null, null);
-
+        gameOverScreen = root.setText(new AlignmentHorizontal(AlignmentTypeHorizontal.CENTER),
+                new AlignmentVertical(AlignmentTypeVertical.MIDDLE), null, null);
 
     }
 
@@ -77,56 +82,83 @@ public class SnakeGame extends GameWindowBase<String> {
         SpecialCharacterKey keyStrokePlayer1 = getSpecialInput(1);
         items[2].setText("P1: " + String.valueOf(keyStrokePlayer0));
         items[3].setText("P2: " + String.valueOf(keyStrokePlayer1));
-        //#####################################################################################################
-        // STUDENT TODO: Implement a method to get the players keystroke and update the direction accordingly.
+        // #####################################################################################################
+        // STUDENT TODO: Implement a method to get the players keystroke and update the
+        // direction accordingly.
+        direction0 = keyStrokePlayer0;
+        direction1 = keyStrokePlayer1;
 
-
-
-        //#####################################################################################################
+        // #####################################################################################################
 
         // DO NOT CHANGE SOMETHING IN HERE
 
         this.updatePosition(this.snakeBodyPlayer0, direction0);
         this.updatePosition(this.snakeBodyPlayer1, direction1);
 
-        //#####################################################################################################
-        // STUDENT TODO: Check if a payer is gameover
+        // #####################################################################################################
+        // STUDENT TODO: Check if a player is gameover
+        isGameOver(snakeBodyPlayer0);
+        isGameOver(snakeBodyPlayer1);
 
-
-        //#####################################################################################################
-
+        // #####################################################################################################
 
     }
 
-
-
-    public void isGameOver(ArrayList<WindowElementItem> snakeBody)
-    {
-        // STUDENT TODO: Implement logic to check if a snake hit another snake or border. To do this you mus
-        // implement the function Boolean inSnake(ArrayList<WindowElementItem> snakeBody)
+    public void isGameOver(ArrayList<WindowElementItem> snakeBody) {
+        // STUDENT TODO: Implement logic to check if a snake hit another snake or
+        // border. To do this you mus
+        // implement the function Boolean inSnake(ArrayList<WindowElementItem>
+        // snakeBody)
         // After that set class member gameover to true and clear screen
+        // Check if the snake has hit another snake
+        if (this.gameOver)
+            return;
+
+        for (WindowElementItem item : snakeBody) {
+            if (inSnake(snakeBody) && !item.equals(snakeBody.get(0))) {
+                gameOver = true;
+                return;
+            }
+        }
+
+        WindowElementItem head = snakeBody.get(0);
+        if (head.getX() == 0 || head.getX() == root.getWidth() - 1 ||
+                head.getY() == 0 || head.getY() == root.getHeight() - 1) {
+            gameOver = true;
+            return;
+        }
+
+        gameOverScreen.setText(gameOverText);
+        direction0 = SpecialCharacterKey.NONE;
+        direction1 = SpecialCharacterKey.NONE;
     }
 
-    public Boolean inSnake(ArrayList<WindowElementItem> snakeBody)
-    {
-        // STUDENT TODO: Implement a method to check if a head of the provided snake body hit
+    public Boolean inSnake(ArrayList<WindowElementItem> snakeBody) {
+        // STUDENT TODO: Implement a method to check if a head of the provided snake
+        // body hit
         // another snake body
         int posHeadX = snakeBody.get(0).getX();
         int posHeadY = snakeBody.get(0).getY();
+        for (int i = 1; i < snakeBody.size(); i++) {
+            if (posHeadX == snakeBody.get(i).getX() && posHeadY == snakeBody.get(i).getY()) {
+                return true;
+            }
+        }
+
         return false;
     }
 
-    public void updatePosition(ArrayList<WindowElementItem> snakeBody, SpecialCharacterKey direction)
-    {
+    public void updatePosition(ArrayList<WindowElementItem> snakeBody, SpecialCharacterKey direction) {
 
         if (this.gameOver)
             return;
 
-        int oldLastY = snakeBody.get(snakeBody.size()-1).getY();
-        int oldLastX = snakeBody.get(snakeBody.size()-1).getX();
+        int oldLastY = snakeBody.get(snakeBody.size() - 1).getY();
+        int oldLastX = snakeBody.get(snakeBody.size() - 1).getX();
         if (direction == SpecialCharacterKey.LEFT) {
             int old_x = snakeBody.get(0).getX();
-            int old_y = snakeBody.get(0).getY();;
+            int old_y = snakeBody.get(0).getY();
+            ;
             snakeBody.get(0).decrementX();
             for (int index = 1; index < snakeBody.size(); index++) {
                 int tmp_x = snakeBody.get(index).getX();
@@ -138,7 +170,8 @@ public class SnakeGame extends GameWindowBase<String> {
             }
         } else if (direction == SpecialCharacterKey.RIGHT) {
             int old_x = snakeBody.get(0).getX();
-            int old_y = snakeBody.get(0).getY();;
+            int old_y = snakeBody.get(0).getY();
+            ;
             snakeBody.get(0).incrementX();
             for (int index = 1; index < snakeBody.size(); index++) {
                 int tmp_x = snakeBody.get(index).getX();
@@ -150,7 +183,8 @@ public class SnakeGame extends GameWindowBase<String> {
             }
         } else if (direction == SpecialCharacterKey.DOWN) {
             int old_x = snakeBody.get(0).getX();
-            int old_y = snakeBody.get(0).getY();;
+            int old_y = snakeBody.get(0).getY();
+            ;
             snakeBody.get(0).incrementY();
             for (int index = 1; index < snakeBody.size(); index++) {
                 int tmp_x = snakeBody.get(index).getX();
@@ -160,9 +194,10 @@ public class SnakeGame extends GameWindowBase<String> {
                 old_x = tmp_x;
                 old_y = tmp_y;
             }
-        } else if (direction == SpecialCharacterKey.UP)  {
+        } else if (direction == SpecialCharacterKey.UP) {
             int old_x = snakeBody.get(0).getX();
-            int old_y = snakeBody.get(0).getY();;
+            int old_y = snakeBody.get(0).getY();
+            ;
             snakeBody.get(0).decrementY();
             for (int index = 1; index < snakeBody.size(); index++) {
                 int tmp_x = snakeBody.get(index).getX();
@@ -175,32 +210,53 @@ public class SnakeGame extends GameWindowBase<String> {
         }
 
         // Student TODO: Call a method to detect if the snake just ate an apple
+        hitApple(oldLastX, oldLastY, snakeBody);
 
     }
 
-
-    public void hitApple(int oldLastX, int oldLastY, ArrayList<WindowElementItem> snakeBody)
-    {
+    public void hitApple(int oldLastX, int oldLastY, ArrayList<WindowElementItem> snakeBody) {
         int posHeadX = snakeBody.get(0).getX();
         int posHeadY = snakeBody.get(0).getY();
         int hittedApple = -1;
-        for (int i = 0; i < apples.size(); i++)
-        {
-            if (apples.get(i).getX() == posHeadX && apples.get(i).getY() == posHeadY)
-            {
+        for (int i = 0; i < apples.size(); i++) {
+            if (apples.get(i).getX() == posHeadX && apples.get(i).getY() == posHeadY) {
                 hittedApple = i;
                 break;
             }
         }
 
-        // Student TODO: Write a method to add a new body element to the snake and print it to the gamescreen
-
+        // Student TODO: Write a method to add a new body element to the snake and print
+        // it to the gamescreen
+        if(hittedApple == -1) return;
+        apples.get(hittedApple).setText(null);
+        apples.remove(hittedApple);
+        snakeBody.add(root.setElement(oldLastX, oldLastY, 'X', null));
     }
 
+    public void spawnApple() {
+        // STUDENT TODO: Write a method to randomly spawn apples. Use the applescount
+        // member variable for this task
+        for(int i = 0; i <  apples.size(); i++) {
+            apples.get(i).setText(null);
+        }
+        this.apples.clear();
+        boolean overlapping;
+        int randomX, randomY;
 
-    public void spawnApple()
-    {
-        // STUDENT TODO: Write a method to randomly spawn apples. Use the applescount member variable for this task
+        do {
+            randomX = (int) (Math.random() * root.getWidth());
+            randomY = (int) (Math.random() * root.getHeight());
+            overlapping = false;
+            for (WindowElementItem apple : apples) {
+                if (apple.getX() == randomX && apple.getY() == randomY) {
+                    overlapping = true;
+                    break;
+                }
+            }
+            if (overlapping) {
+                apples.add(root.setElement(randomX, randomY, 'A', null));
+            }
+        } while (appleCount < apples.size());
     }
 
 }

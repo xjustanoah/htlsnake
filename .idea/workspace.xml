@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0fa95ecb-6e2e-4680-abab-6a18df600a71" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/.codetogether.ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/.settings/org.eclipse.m2e.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/compile.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/annotations/WindowStateAnnotation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/annotations/WindowStateAnnotationProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/InteractiveWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/RenderEngine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/RenderEngineThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/TalkyInteractiveWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/Window.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/configurations/AdvancedColor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/configurations/AlignmentHorizontal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/configurations/AlignmentVertical.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/configurations/TextStyle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/configurations/data/AlignmentTypeHorizontal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/configurations/data/AlignmentTypeVertical.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/data/WindowElementItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/engine/interfaces/InteractiveWindowInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/logging/Manager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/socket/CharacterReaderThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/socket/ClientHandlerThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/socket/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/socket/data/SpecialCharacterKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/RootWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/WindowManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/games/GameWindowBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/games/MovementWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/games/SnakeGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/style/DefaultStyle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/tools/AlertWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/tools/MenuWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/tools/UserInputWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/tools/inputFilter/AlphaNumericFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/tools/inputFilter/InputFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/tools/inputModifier/InputModifier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snakegame-mp/src/main/java/at/htl/leoben/windows/tools/inputModifier/UpperCaseModifier.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MUpvbw7SWgL7o9erFoIcPHRH9v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0fa95ecb-6e2e-4680-abab-6a18df600a71" name="Changes" comment="" />
+      <created>1677832251063</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677832251063</updated>
+      <workItem from="1677832255285" duration="75000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
